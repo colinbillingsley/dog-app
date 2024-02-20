@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --brown-color: rgb(122, 70, 30);
+  --brown-color-dark: rgb(59, 34, 14);
+  --brown-color-light: rgba(165, 95, 42, 0.229);
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem 2rem 2rem 2rem;
+}
+
+/* ============================
+Nav.js
+============================ */
+.nav {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 2em;
+  background-color: var(--brown-color-light);
+  transition: all 0.3s ease;
+}
+
+.nav.dark-bg {
+  background-color: var(--brown-color-dark);
+  color: white;
+}
+
+.nav.dark-bg .nav-links-list a {
+  color: white;
+}
+
+.nav.dark-bg .nav-links-list a:hover {
+  background-color: var(--brown-color);
+}
+
+.nav-links-list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  list-style: none;
+}
+
+.nav-links-list li a {
+  color: black;
+  text-decoration: none;
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-links-list a:hover {
+  background-color: var(--brown-color-light);
+  color: var(--brown-color);
+}
+
+/* ============================
+AllDogs.js
+============================ */
+.dogs-list {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto;
+  row-gap: 1em;
+  justify-items: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 2em;
+  width: 100%;
+}
+
+.dogs-list li a {
+  position: relative;
+  color: var(--brown-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dogs-list li a::after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--brown-color);
+  transition: all 0.3s ease;
+}
+
+.dogs-list li a:hover {
+  opacity: 0.75;
+}
+
+.dogs-list li a:hover::after {
+  width: 100%;
+}
+
+/* ============================
+BreedPage.js
+============================ */
+.breed-page h1 {
+  align-self: flex-start;
+  margin-bottom: 0.3rem;
+}
+
+.breed-content h2 {
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.breed-page hr {
+  display: block;
+  width: 100%;
+  border: 3px solid var(--brown-color-light);
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.breed-content {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.breed-content.hidden {
+  display: none;
+}
+
+.sub-breeds-list {
+  align-self: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  list-style: none;
+}
+
+.sub-breeds-list .sub-breed-item a{
+  border: 1px solid var(--brown-color);
+  border-radius: 20px;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: var(--brown-color);
+  font-weight: 500;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.sub-breeds-list .sub-breed-item a:hover {
+  background-color: var(--brown-color-light);
+}
+
+.image-header {
+  margin-top: 1em;
+}
+
+.breed-images-list {
+  display: inline-block;
+  column-count: 3;
+  column-gap: 5px;
+  row-gap: 5px;
+  list-style-type: none;
+}
+
+.breed-images-list li img {
+  border-radius: 10px;
+  width: 400px;
+  height: auto;
+}
+
+.no-sub-breeds {
+  background-color: var(--brown-color-light);
+  border-radius: 10px;
+  text-align: center;
+  color: var(--brown-color);
+  padding: 1em 2em;
+}
+
+.loading.hidden {
+  display: none;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1em;
+  color: var(--brown-color);
+  border-radius: 10px;
+  background-color: var(--brown-color-light);
+  padding: 1em 2em;
+  margin-top: 1em;
+  width: 200px;
+}
+
+.loading::after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+  animation: ellipsis steps(4, end) 900ms infinite;
+  content: "\2026";
+  /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!
+Media Queries
+!!!!!!!!!!!!!!!!!!!!!!!!! */
+@media (max-width: 1400px) {
+  .breed-images-list li img{
+    width: 300px;
+  }
+
+  .breed-images-list {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1270px) {
+  .breed-images-list {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 1000px) {
+  .breed-images-list li img{
+    width: 200px;
+  }
+  .breed-images-list {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 900px) {
+  .dogs-list {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media (max-width: 880px) {
+  .breed-images-list {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 675px) {
+  .breed-images-list {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 650px) {
+  .dogs-list {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width: 470px) {
+  .breed-images-list li img{
+    width: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  .dogs-list {
+    grid-template-columns: auto;
+  }
+
+  .breed-page h1 {
+    font-size: 1.75em;
+  }
+
+  .breed-page h2 {
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 370px) {
+  .breed-images-list {
+    column-count: 1;
+  }
+}
+
+
+/* * * * * * * * * * * * * * *
+Animations
+* * * * * * * * * * * * * * */
+@keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
