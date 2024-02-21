@@ -1,18 +1,24 @@
 import axios from 'axios';
 
 import Nav from '../components/Nav';
+import Search from '../components/Search';
+import { useState, useEffect } from 'react';
 
 const AllDogs = () => {
+    const [dogs, setDogs] = useState([])
     const allDogsURL = 'https://dog.ceo/api/breeds/list/all';
 
     // Fetch all dogs data from API
     const GetAllDogs = async () => {
         try {
-            const response = await axios.get(allDogsURL);
-            const dogsObject = response.data.message;
-            const dogsArray = Object.keys(dogsObject);
-
-            ShowData(dogsArray);
+            const data = await axios
+                .get(allDogsURL)
+                .then((response) => {
+                    const dogsObject = response.data.message;
+                    const dogsArray = Object.keys(dogsObject);
+                    console.log(dogsArray);
+                    ShowData(dogsArray);
+                })
         } catch (error) {
             console.log(error);
         }
@@ -35,14 +41,23 @@ const AllDogs = () => {
             li.appendChild(link);
             // append new list item to list
             dogsList.appendChild(li)
+
+            setDogs([...dogs, dog]);
         }
     }
 
-    GetAllDogs();
+    useEffect(() => {
+        GetAllDogs();
+    }, [])
+
+    
 
     return (
         <div className='all-dogs'>
             <Nav />
+            <div className="search-container">
+                <Search dogs={dogs}/>
+            </div>
             <div className="main-content">
                 <h1>All Dogs</h1>
                 <ul className="dogs-list"></ul>

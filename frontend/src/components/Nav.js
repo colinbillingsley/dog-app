@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDog, faHouse } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
     const [atTop, setAtTop] = useState(true);
@@ -17,10 +19,10 @@ const Nav = () => {
 
     return (
         <div className={`nav ${atTop ? '' : 'dark-bg'}`}>
-            <span className="icon">DoggyPics</span>
+            <span className="icon"><FontAwesomeIcon icon={faDog}/> DoggyPics</span>
             <ul className="nav-links-list">
                 <li className="nav-link-item">
-                    <Link to="/">Home</Link>
+                    <Link to="/"><FontAwesomeIcon icon={faHouse} /> Home</Link>
                 </li>
             </ul>
         </div>

@@ -20,7 +20,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem 2rem 2rem 2rem;
+  padding: 2rem;
 }
 
 /* ============================
@@ -64,12 +64,13 @@ Nav.js
   text-decoration: none;
   padding: 0.3em 1em;
   border-radius: 5px;
-  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
 }
 
 .nav-links-list a:hover {
-  background-color: var(--brown-color-light);
-  color: var(--brown-color);
+  border: 2px solid var(--brown-color-dark);
+  background-color: rgba(210, 180, 140, 0.4);
 }
 
 /* ============================
@@ -117,13 +118,14 @@ AllDogs.js
 BreedPage.js
 ============================ */
 .breed-page h1 {
+  padding-top: 4rem;
   align-self: flex-start;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .breed-content h2 {
   align-self: flex-start;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .breed-page hr {
@@ -173,7 +175,7 @@ BreedPage.js
 }
 
 .image-header {
-  margin-top: 1em;
+  margin-top: 2rem;
 }
 
 .breed-images-list {
@@ -222,6 +224,61 @@ BreedPage.js
   content: "\2026";
   /* ascii code for the ellipsis character */
   width: 0px;
+}
+
+/* ============================
+Search.js
+============================ */
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8rem;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.magnifying-glass {
+  outline: 2px solid transparent;
+  outline-offset: 6px;
+  background-color: var(--brown-color-light);
+  border-radius: 5px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.magnifying-glass:hover {
+  cursor: pointer;
+  outline-offset: 0;
+  outline: 2px solid var(--brown-color-dark);
+}
+
+.search input {
+  padding: 1rem;
+  border-radius: 5px;
+  border: 2px solid var(--brown-color-light);
+}
+
+.search input:focus {
+  outline: none;
+  border: 2px solid var(--brown-color-dark);
+}
+
+.search-error {
+  background-color: rgba(255, 0, 0, 0.187);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+}
+
+.search-error.hidden {
+  display: none;
 }
 
 /* !!!!!!!!!!!!!!!!!!!!!!!!!
